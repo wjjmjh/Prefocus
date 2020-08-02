@@ -1,0 +1,28 @@
+# packages
+src/*.egg
+src/*.egg-info
+
+# IDE stuff
+.idea/*
+
+# dependencies
+prefocus-client/node_modules
+prefocus-client/.pnp
+prefocus-client/.pnp.js
+
+# testing
+prefocus-client/coverage
+
+# production
+prefocus-client/build
+
+# misc
+prefocus-client/.DS_Store
+prefocus-client/.env.local
+prefocus-client/.env.development.local
+prefocus-client/.env.test.local
+prefocus-client/.env.production.local
+
+prefocus-client/npm-debug.log*
+prefocus-client/yarn-debug.log*
+prefocus-client/yarn-error.log*
