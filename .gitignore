@@ -28,3 +28,6 @@ prefocus-client/npm-debug.log*
 prefocus-client/yarn-debug.log*
 prefocus-client/yarn-error.log*
 /prefocus-client/package-lock.json
+
+# labs
+/src/prefocus/labs/*
