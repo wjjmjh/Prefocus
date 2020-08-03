@@ -12,11 +12,11 @@
   }
 
   &.highlight {
-    border-color: #ff2968;
-    background-color: #ff8fb0;
+    border-color: #294dff;
+    background-color: #3c53cb;
 
     &:last-child {
-      border-color: #ff2968;
+      border-color: #294dff;
     }
   }
 
@@ -37,4 +37,8 @@
       margin-right: 1rem;
     }
   }
+}
+
+#deleteItem {
+  background-color: #3c53cb;
 }

@@ -45,6 +45,7 @@ class FocusItem extends React.Component {
         </label>
         <button
           type="button"
+          id={"deleteItem"}
           className="btn btn-danger btn-sm"
           onClick={this.deleteItem}
         >

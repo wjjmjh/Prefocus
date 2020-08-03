@@ -58,8 +58,8 @@ class Prefocus extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h3 className="apptitle">Prefocus</h3>
+      <div id={"stack"}>
+        <div className="apptitle">Prefocus</div>
         <div className="row">
           <div className="col-md-3">
             <FocusList
