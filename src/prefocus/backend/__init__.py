@@ -4,7 +4,7 @@ from prefocus.lib import MySQLManager, now, wrap
 mysql = MySQLManager()
 
 
-def append_a_focusing(prefocus, id):
+def append_a_prefocus(prefocus, id):
     date = now()
     mysql.insert_into_default_focusing_table([[date, str(prefocus), str(id)]])
 
@@ -30,3 +30,7 @@ def focused_to_focusing(id):
 def abandon_a_record(id):
     mysql.do("DELETE FROM focusing WHERE id = {id}".format(id=wrap(id)))
     mysql.do("DELETE FROM focused WHERE id = {id}".format(id=wrap(id)))
+
+
+def purge_database():
+    mysql.purge_database()
