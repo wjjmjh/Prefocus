@@ -59,7 +59,6 @@ class Prefocus extends React.Component {
   render() {
     return (
       <div id={"stack"}>
-        <div className="apptitle">Prefocus</div>
         <div className="row">
           <div className="col-md-3">
             <FocusList
@@ -84,7 +83,7 @@ class Prefocus extends React.Component {
               onClick={this.handleAddItem}
               disabled={!this.state.text}
             >
-              {"Add #" + (this.state.items.length + 1)}
+              {"Add > " + (this.state.items.length + 1)}
             </button>
           </div>
         </form>
