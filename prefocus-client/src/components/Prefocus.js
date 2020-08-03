@@ -41,9 +41,21 @@ class Prefocus extends React.Component {
       prefocusId: newItem.id,
     });
   }
-  markItemCompleted(itemId) {
-    var updatedItems = this.state.items.map((item) => {
-      if (itemId === item.id) item.done = !item.done;
+  async markItemCompleted(itemId) {
+    var updatedItems = await this.state.items.map((item) => {
+      if (itemId === item.id) {
+        if (item.done === false) {
+          axios.post("http://127.0.0.1:5000/focusing_to_focused", null, {
+            params: { recordId: itemId },
+          });
+        } else {
+          axios.post("http://127.0.0.1:5000/focused_to_focusing", null, {
+            params: { recordId: itemId },
+          });
+        }
+
+        item.done = !item.done;
+      }
       return item;
     });
 
