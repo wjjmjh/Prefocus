@@ -1,9 +1,9 @@
 from flask import Flask, request
 from flask_cors import CORS
 
-from prefocus.backend import (abandon_a_record, append_a_prefocus,
-                              focused_to_focusing, focusing_to_focused,
-                              purge_database)
+from prefocus.backend import (abandon_a_record, all_today_prefocus,
+                              append_a_prefocus, focused_to_focusing,
+                              focusing_to_focused, purge_database)
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -42,3 +42,8 @@ def app_focusing_to_focused():
 @app.route("/purge_database", methods=["POST"])
 def app_purge_database():
     purge_database()
+
+
+@app.route("/all_today_prefocus", methods=["GET"])
+def app_all_today_prefocus():
+    return all_today_prefocus()

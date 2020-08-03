@@ -3,6 +3,9 @@ from prefocus.lib import MySQLManager, now, wrap
 
 mysql = MySQLManager()
 
+_focusing_fields = ["date", "prefocus", "id"]
+_focused_fields = ["date", "prefocus", "id"]
+
 
 def append_a_prefocus(prefocus, id):
     date = now()
@@ -34,3 +37,11 @@ def abandon_a_record(id):
 
 def purge_database():
     mysql.purge_database()
+
+
+def all_today_prefocus():
+    today = now()
+    got = mysql.fetch(
+        "SELECT * FROM focusing WHERE date = {date}".format(date=wrap(today))
+    )
+    return {"allTodayFocus": [it[_focusing_fields.index("prefocus")] for it in got]}
