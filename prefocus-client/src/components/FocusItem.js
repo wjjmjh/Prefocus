@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/focus-item.scss";
+import axios from "axios";
 
 class FocusItem extends React.Component {
   constructor(props) {
@@ -10,9 +11,14 @@ class FocusItem extends React.Component {
   markCompleted(event) {
     this.props.onItemCompleted(this.props.id);
   }
-  deleteItem(event) {
+
+  async deleteItem(event) {
     this.props.onDeleteItem(this.props.id);
+    await axios.post("http://127.0.0.1:5000/abandon_a_record", null, {
+      params: { recordId: this.props.id },
+    });
   }
+
   // Highlight newly added item for several seconds.
   componentDidMount() {
     if (this._listItem) {
