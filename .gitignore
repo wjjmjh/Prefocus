@@ -4,6 +4,7 @@ src/*.egg-info
 
 # IDE stuff
 .idea/*
+/prefocus-client/.idea/
 
 # dependencies
 prefocus-client/node_modules
@@ -26,3 +27,4 @@ prefocus-client/.env.production.local
 prefocus-client/npm-debug.log*
 prefocus-client/yarn-debug.log*
 prefocus-client/yarn-error.log*
+/prefocus-client/package-lock.json
