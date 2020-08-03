@@ -37,5 +37,7 @@ def format_day_or_month(target):
 def now():
     got = datetime.now()
     return "{dd}{mm}{yyyy}".format(
-        dd=format_day_or_month(got.day), mm=format_day_or_month(got.month), yyyy=str(got.year)
+        dd=format_day_or_month(got.day),
+        mm=format_day_or_month(got.month),
+        yyyy=str(got.year),
     )

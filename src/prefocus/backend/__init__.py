@@ -1,10 +1,16 @@
 # credits: Stephen Ka-Wah Ma
+import ast
+
 from prefocus.lib import MySQLManager, now, wrap
 
 mysql = MySQLManager()
 
 _focusing_fields = ["date", "prefocus", "id"]
 _focused_fields = ["date", "prefocus", "id"]
+
+
+def bytes_to_dict(bs):
+    return ast.literal_eval(bs.decode("UTF-8"))
 
 
 def append_a_prefocus(prefocus, id):
@@ -41,7 +47,6 @@ def purge_database():
 
 def all_today_prefocus():
     today = now()
-    print(today)
     got = mysql.fetch(
         "SELECT * FROM focusing WHERE date = {date}".format(date=wrap(today))
     )

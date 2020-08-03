@@ -22,7 +22,7 @@ class Prefocus extends React.Component {
       text: event.target.value,
     });
   }
-  handleAddItem(event) {
+  async handleAddItem(event) {
     event.preventDefault();
 
     var newItem = {
@@ -35,6 +35,11 @@ class Prefocus extends React.Component {
       items: prevState.items.concat(newItem),
       text: "",
     }));
+
+    await axios.post("http://127.0.0.1:5000/append_a_prefocus", {
+      prefocusDesc: newItem.text,
+      prefocusId: newItem.id,
+    });
   }
   markItemCompleted(itemId) {
     var updatedItems = this.state.items.map((item) => {
@@ -47,7 +52,8 @@ class Prefocus extends React.Component {
       items: [].concat(updatedItems),
     });
   }
-  handleDeleteItem(itemId) {
+
+  handleDeleteItem = (itemId) => {
     var updatedItems = this.state.items.filter((item) => {
       return item.id !== itemId;
     });
@@ -55,7 +61,7 @@ class Prefocus extends React.Component {
     this.setState({
       items: [].concat(updatedItems),
     });
-  }
+  };
 
   componentDidMount() {
     const host = "http://127.0.0.1:5000";
