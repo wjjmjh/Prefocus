@@ -1,5 +1,6 @@
 import React from "react";
 import FocusList from "./FocusList";
+import axios from "axios";
 import "../styles/prefocus.scss";
 
 class Prefocus extends React.Component {
@@ -38,7 +39,6 @@ class Prefocus extends React.Component {
   markItemCompleted(itemId) {
     var updatedItems = this.state.items.map((item) => {
       if (itemId === item.id) item.done = !item.done;
-
       return item;
     });
 
@@ -56,6 +56,16 @@ class Prefocus extends React.Component {
       items: [].concat(updatedItems),
     });
   }
+
+  componentDidMount() {
+    const host = "http://127.0.0.1:5000";
+    return axios.get(`${host}/all_today_prefocus`).then((response) => {
+      const got = response.data["allTodayFocus"];
+      console.log(got);
+      this.setState({ items: this.state.items.concat(got) });
+    });
+  }
+
   render() {
     return (
       <div id={"stack"}>

@@ -41,7 +41,17 @@ def purge_database():
 
 def all_today_prefocus():
     today = now()
+    print(today)
     got = mysql.fetch(
         "SELECT * FROM focusing WHERE date = {date}".format(date=wrap(today))
     )
-    return {"allTodayFocus": [it[_focusing_fields.index("prefocus")] for it in got]}
+    return {
+        "allTodayFocus": [
+            {
+                "id": it[_focusing_fields.index("id")],
+                "text": it[_focusing_fields.index("prefocus")],
+                "done": False,
+            }
+            for it in got
+        ]
+    }

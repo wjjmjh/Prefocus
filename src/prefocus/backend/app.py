@@ -47,3 +47,7 @@ def app_purge_database():
 @app.route("/all_today_prefocus", methods=["GET"])
 def app_all_today_prefocus():
     return all_today_prefocus()
+
+
+if __name__ == "__main__":
+    app.run()
