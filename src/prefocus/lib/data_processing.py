@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 
 import pandas as pd
 
@@ -18,3 +19,10 @@ def dry(csv_path):
     :return: a two dimension array
     """
     return pd.read_csv(csv_path).values.tolist()
+
+
+def now():
+    got = datetime.now()
+    return "{dd}{mm}{yyyy}".format(
+        dd=str(got.day), mm=str(got.month), yyyy=str(got.year)
+    )
