@@ -34,11 +34,13 @@
     }
 
     .right {
+      margin-right: 5%;
       transform: rotate(-45deg);
       -webkit-transform: rotate(-45deg);
     }
 
     .left {
+      margin-left: 5%;
       transform: rotate(135deg);
       -webkit-transform: rotate(135deg);
     }
