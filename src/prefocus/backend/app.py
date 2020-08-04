@@ -67,4 +67,4 @@ def app_merge_uncomplete_prefocus_from_a_selected_date():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port="1112")

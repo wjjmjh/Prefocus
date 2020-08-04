@@ -37,7 +37,7 @@ class Prefocus extends React.Component {
       text: "",
     }));
 
-    await axios.post("http://127.0.0.1:5000/append_a_prefocus", {
+    await axios.post("http://127.0.0.1:1112/append_a_prefocus", {
       prefocusDesc: newItem.text,
       prefocusId: newItem.id,
     });
@@ -46,11 +46,11 @@ class Prefocus extends React.Component {
     var updatedItems = await this.state.items.map((item) => {
       if (itemId === item.id) {
         if (item.done === false) {
-          axios.post("http://127.0.0.1:5000/focusing_to_focused", null, {
+          axios.post("http://127.0.0.1:1112/focusing_to_focused", null, {
             params: { recordId: itemId },
           });
         } else {
-          axios.post("http://127.0.0.1:5000/focused_to_focusing", null, {
+          axios.post("http://127.0.0.1:1112/focused_to_focusing", null, {
             params: { recordId: itemId },
           });
         }
@@ -81,7 +81,7 @@ class Prefocus extends React.Component {
   };
 
   componentDidMount() {
-    const host = "http://127.0.0.1:5000";
+    const host = "http://127.0.0.1:1112";
     return axios.get(`${host}/all_today_prefocus`).then((response) => {
       const got = response.data["allTodayFocus"];
       this.setState({ items: this.state.items.concat(got) });
