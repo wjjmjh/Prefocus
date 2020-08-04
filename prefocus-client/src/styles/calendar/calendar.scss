@@ -27,19 +27,20 @@
     }
 
     .arrow {
-      text-align: center;
-      flex-basis: 15%;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+    }
 
-      &:hover {
-        background: #d129ff;
-      }
+    .right {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+
+    .left {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
     }
   }
 }
