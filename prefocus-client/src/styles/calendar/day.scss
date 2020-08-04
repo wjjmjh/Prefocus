@@ -4,12 +4,12 @@
   align-items: center;
   flex: 1;
   height: 35px;
-  border-left: solid 1px #ff0000;
+  border-left: solid 1px #294dff;
   cursor: pointer;
   transition: all 0.2s;
 
   &:hover {
-    background: #ff0000;
+    background: #6279fd;
   }
 
   &:first-child {
@@ -17,15 +17,15 @@
   }
 
   &.today {
-    background: #ff0000;
+    background: #294dff;
   }
 
   &.different-month {
-    color: #ff0000;
+    color: #294dff;
   }
 
   &.selected {
-    background: #ff0000;
-    color: #ff0000;
+    background: #4d6dff;
+    color: #ffffff;
   }
 }
