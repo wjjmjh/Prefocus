@@ -1,0 +1,14 @@
+.day-names {
+  color: #ff0000;
+  font-weight: bold;
+  cursor: default;
+  font-size: 1.2rem;
+
+  .day {
+    cursor: default;
+
+    &:hover {
+      background: inherit;
+    }
+  }
+}
