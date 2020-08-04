@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import DayNames from "./Daynames";
 import Week from "./Week";
+import "../../styles/calendar/calendar.scss";
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -83,9 +84,9 @@ class Calendar extends React.Component {
       <section className="calendar">
         <header className="header">
           <div className="month-display row">
-            <i className="arrow fa fa-angle-left" onClick={this.previous} />
+            {/*<i className="arrow fa fa-angle-left" onClick={this.previous} />*/}
             {this.renderMonthLabel()}
-            <i className="arrow fa fa-angle-right" onClick={this.next} />
+            {/*<i className="arrow fa fa-angle-right" onClick={this.next} />*/}
           </div>
           <DayNames />
         </header>

@@ -1,6 +1,6 @@
 import React from "react";
 import Day from "./Day";
-import "../../styles/calendar/week.scss"
+import "../../styles/calendar/week.scss";
 
 class Week extends React.Component {
   render() {
