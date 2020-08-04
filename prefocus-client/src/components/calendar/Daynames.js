@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/calendar/daynames.scss"
+import "../../styles/calendar/daynames.scss";
 
 class DayNames extends React.Component {
   render() {

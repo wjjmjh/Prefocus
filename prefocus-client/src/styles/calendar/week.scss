@@ -1,0 +1,7 @@
+.week {
+  border-top: solid 1px #ff0000;
+
+  &:first-child {
+    border-top: none;
+  }
+}
