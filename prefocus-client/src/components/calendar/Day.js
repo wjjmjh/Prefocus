@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/calendar/day.scss";
 
 class Day extends React.Component {
   render() {
