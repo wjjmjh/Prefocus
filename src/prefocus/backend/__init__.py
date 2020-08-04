@@ -60,3 +60,19 @@ def all_today_prefocus():
             for it in got
         ]
     }
+
+
+def merge_uncomplete_prefocus_from_a_selected_date(date):
+    got = mysql.fetch(
+        "SELECT * FROM focusing WHERE date = {date}".format(date=wrap(date))
+    )
+    return {
+        "uncompleted": [
+            {
+                "id": it[_focusing_fields.index("id")],
+                "text": it[_focusing_fields.index("prefocus")],
+                "done": False,
+            }
+            for it in got
+        ]
+    }

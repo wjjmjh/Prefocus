@@ -3,6 +3,7 @@ import moment from "moment";
 import DayNames from "./Daynames";
 import Week from "./Week";
 import "../../styles/calendar/calendar.scss";
+import axios from "axios";
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -33,11 +34,22 @@ class Calendar extends React.Component {
     });
   }
 
-  select(day) {
+  async select(day) {
     this.setState({
       selected: day.date,
       month: day.date.clone(),
     });
+
+    const selected = day.date.format("DDMMYYYY");
+    await axios
+      .get(
+        `http://127.0.0.1:5000/merge_uncomplete_prefocus_from_a_selected_date`,
+        { params: { selected: selected } }
+      )
+      .then((response) => {
+        const got = response.data["uncompleted"];
+        this.props.mergeUncompleted(got);
+      });
   }
 
   renderWeeks() {

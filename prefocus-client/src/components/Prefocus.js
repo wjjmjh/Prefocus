@@ -1,6 +1,7 @@
 import React from "react";
 import FocusList from "./FocusList";
 import axios from "axios";
+import Calendar from "./calendar/Calendar";
 import "../styles/prefocus.scss";
 
 class Prefocus extends React.Component {
@@ -75,46 +76,52 @@ class Prefocus extends React.Component {
     });
   };
 
+  mergeUncompleted = (uncompleted) => {
+    this.setState({ items: this.state.items.concat(uncompleted) });
+  };
+
   componentDidMount() {
     const host = "http://127.0.0.1:5000";
     return axios.get(`${host}/all_today_prefocus`).then((response) => {
       const got = response.data["allTodayFocus"];
-      console.log(got);
       this.setState({ items: this.state.items.concat(got) });
     });
   }
 
   render() {
     return (
-      <div id={"stack"}>
-        <div className="row">
-          <div className="col-md-3">
-            <FocusList
-              items={this.state.items}
-              onItemCompleted={this.markItemCompleted}
-              onDeleteItem={this.handleDeleteItem}
-            />
+      <div>
+        <div id={"stack"}>
+          <div className="row">
+            <div className="col-md-3">
+              <FocusList
+                items={this.state.items}
+                onItemCompleted={this.markItemCompleted}
+                onDeleteItem={this.handleDeleteItem}
+              />
+            </div>
           </div>
+          <form className="row">
+            <div className="col-md-3">
+              <input
+                type="text"
+                className="form-control"
+                onChange={this.handleTextChange}
+                value={this.state.text}
+              />
+            </div>
+            <div className="col-md-3">
+              <button
+                className="btn btn-primary"
+                onClick={this.handleAddItem}
+                disabled={!this.state.text}
+              >
+                {"Add > " + (this.state.items.length + 1)}
+              </button>
+            </div>
+          </form>
         </div>
-        <form className="row">
-          <div className="col-md-3">
-            <input
-              type="text"
-              className="form-control"
-              onChange={this.handleTextChange}
-              value={this.state.text}
-            />
-          </div>
-          <div className="col-md-3">
-            <button
-              className="btn btn-primary"
-              onClick={this.handleAddItem}
-              disabled={!this.state.text}
-            >
-              {"Add > " + (this.state.items.length + 1)}
-            </button>
-          </div>
-        </form>
+        <Calendar mergeUncompleted={this.mergeUncompleted} />
       </div>
     );
   }

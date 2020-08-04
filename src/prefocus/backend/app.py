@@ -4,6 +4,7 @@ from flask_cors import CORS
 from prefocus.backend import (abandon_a_record, all_today_prefocus,
                               append_a_prefocus, bytes_to_dict,
                               focused_to_focusing, focusing_to_focused,
+                              merge_uncomplete_prefocus_from_a_selected_date,
                               purge_database)
 
 app = Flask(__name__)
@@ -57,6 +58,12 @@ def app_purge_database():
 @app.route("/all_today_prefocus", methods=["GET"])
 def app_all_today_prefocus():
     return all_today_prefocus()
+
+
+@app.route("/merge_uncomplete_prefocus_from_a_selected_date", methods=["GET"])
+def app_merge_uncomplete_prefocus_from_a_selected_date():
+    selected = request.args.get("selected")
+    return merge_uncomplete_prefocus_from_a_selected_date(selected)
 
 
 if __name__ == "__main__":
