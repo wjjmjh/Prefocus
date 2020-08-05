@@ -7,6 +7,7 @@ class FocusItem extends React.Component {
     super(props);
     this.markCompleted = this.markCompleted.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.stashItem = this.stashItem.bind(this);
   }
   markCompleted(event) {
     this.props.onItemCompleted(this.props.id);
@@ -17,6 +18,10 @@ class FocusItem extends React.Component {
     await axios.post("http://127.0.0.1:1112/abandon_a_record", null, {
       params: { recordId: this.props.id },
     });
+  }
+
+  stashItem(event) {
+    this.props.onStashItem(this.props.id);
   }
 
   // Highlight newly added item for several seconds.
@@ -53,7 +58,7 @@ class FocusItem extends React.Component {
           type="button"
           id={"stashItem"}
           className=""
-          onClick={this.deleteItem}
+          onClick={this.stashItem}
         >
           Stash
         </button>

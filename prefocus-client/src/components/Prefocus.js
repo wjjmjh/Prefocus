@@ -17,6 +17,7 @@ class Prefocus extends React.Component {
     this.handleAddItem = this.handleAddItem.bind(this);
     this.markItemCompleted = this.markItemCompleted.bind(this);
     this.handleDeleteItem = this.handleDeleteItem.bind(this);
+    this.handleStashItem = this.handleStashItem.bind(this);
   }
   handleTextChange(event) {
     this.setState({
@@ -76,6 +77,10 @@ class Prefocus extends React.Component {
     });
   };
 
+  handleStashItem = (itemId) => {
+    this.handleDeleteItem(itemId);
+  };
+
   mergeUncompleted = (uncompleted) => {
     this.setState({ items: this.state.items.concat(uncompleted) });
   };
@@ -98,6 +103,7 @@ class Prefocus extends React.Component {
                 items={this.state.items}
                 onItemCompleted={this.markItemCompleted}
                 onDeleteItem={this.handleDeleteItem}
+                onStashItem={this.handleStashItem}
               />
             </div>
           </div>
