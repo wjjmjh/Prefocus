@@ -51,11 +51,19 @@ class FocusItem extends React.Component {
         </label>
         <button
           type="button"
-          id={"deleteItem"}
-          className="btn btn-danger btn-sm"
+          id={"stashItem"}
+          className=""
           onClick={this.deleteItem}
         >
-          x
+          Stash
+        </button>
+        <button
+          type="button"
+          id={"deleteItem"}
+          className=""
+          onClick={this.deleteItem}
+        >
+          Remove
         </button>
       </li>
     );
