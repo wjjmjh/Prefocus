@@ -76,3 +76,16 @@ def merge_uncomplete_prefocus_from_a_selected_date(date):
             for it in got
         ]
     }
+
+
+def count_a_day(date):
+    got = mysql.fetch(
+        "SELECT COUNT(*) from focusing WHERE date = {date}".format(date=wrap(date))
+    )
+    number_of_left = 0
+    try:
+        got = got[0][0]
+    except IndexError:
+      pass
+    print("{}:{}".format(str(date), str(got)))
+    return {"number_of_left": number_of_left}

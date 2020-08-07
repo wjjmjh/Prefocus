@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 
 from prefocus.backend import (abandon_a_record, all_today_prefocus,
-                              append_a_prefocus, bytes_to_dict,
+                              append_a_prefocus, bytes_to_dict, count_a_day,
                               focused_to_focusing, focusing_to_focused,
                               merge_uncomplete_prefocus_from_a_selected_date,
                               purge_database)
@@ -64,6 +64,12 @@ def app_all_today_prefocus():
 def app_merge_uncomplete_prefocus_from_a_selected_date():
     selected = request.args.get("selected")
     return merge_uncomplete_prefocus_from_a_selected_date(selected)
+
+
+@app.route("/count_a_day", methods=["GET"])
+def app_count_a_day():
+    selected = request.args.get("selected")
+    return count_a_day(selected)
 
 
 if __name__ == "__main__":
