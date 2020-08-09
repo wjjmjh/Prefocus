@@ -48,7 +48,20 @@ class Calendar extends React.Component {
       )
       .then((response) => {
         const got = response.data["uncompleted"];
-        this.props.mergeUncompleted(got);
+
+        if (got.length > 0) {
+          if (
+            window.confirm(
+              "Are you sure you want to merge " +
+                got.length +
+                " prefocus into today's list?"
+            )
+          ) {
+            this.props.mergeUncompleted(got);
+          } else {
+            // Do nothing!
+          }
+        }
       });
   }
 
