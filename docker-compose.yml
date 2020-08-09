@@ -1,0 +1,49 @@
+version: '3.5'
+
+services:
+
+  db:
+    image: mysql
+    container_name: database.dev
+    command: mysqld --user=root --verbose
+    volumes:
+      - './db/dbcreation:/docker-entrypoint-initdb.d/'
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "prefocus"
+      MYSQL_USER: "test"
+      MYSQL_PASSWORD: "mysql_password"
+      MYSQL_ROOT_PASSWORD: "mysql_password"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  flask-api:
+    container_name: prefocus-app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:1112"
+    volumes:
+      - .:/usr/src/Prefocus
+    depends_on:
+      - "db"
+
+  client:
+    container_name: prefocus-app
+    stdin_open: true
+    build:
+      context: ./prefocus-client
+      dockerfile: Dockerfile
+    volumes:
+      - './prefocus-client:/usr/src/prefocus-client'
+      - '/usr/src/prefocus-client/node_modules'
+    ports:
+      - '3333:1111'
+    depends_on:
+      - "flask-api"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - HOST_URL=http://192.168.99.100:5000
