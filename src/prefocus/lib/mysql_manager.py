@@ -97,7 +97,7 @@ class UpdateSQL:
 class MySQLManager:
     def __init__(self, walk_to_network_vector_database=True):
         self.mydb = mysql.connector.connect(
-            host="database.dev", user="root", password="mysql_password"
+            host="database.prefocus", user="root", password="mysql_password"
         )
         if self.mydb.is_connected():
             print("MySQL Database has been successfully connected!")

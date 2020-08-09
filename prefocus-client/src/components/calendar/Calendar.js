@@ -43,7 +43,7 @@ class Calendar extends React.Component {
     const selected = day.date.format("DDMMYYYY");
     await axios
       .get(
-        `http://127.0.0.1:1112/merge_uncomplete_prefocus_from_a_selected_date`,
+        `http://127.0.0.1:5000/merge_uncomplete_prefocus_from_a_selected_date`,
         { params: { selected: selected } }
       )
       .then((response) => {

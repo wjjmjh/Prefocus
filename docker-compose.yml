@@ -4,12 +4,12 @@ services:
 
   db:
     image: mysql
-    container_name: database.dev
+    container_name: database.prefocus
     command: mysqld --user=root --verbose
     volumes:
       - './db/dbcreation:/docker-entrypoint-initdb.d/'
     ports:
-      - "3306:3306"
+      - "3305:3306"
     environment:
       MYSQL_DATABASE: "prefocus"
       MYSQL_USER: "test"
@@ -31,7 +31,7 @@ services:
       - "db"
 
   client:
-    container_name: prefocus-app
+    container_name: prefocus-client
     stdin_open: true
     build:
       context: ./prefocus-client
