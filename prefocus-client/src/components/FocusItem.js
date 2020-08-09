@@ -15,7 +15,7 @@ class FocusItem extends React.Component {
 
   async deleteItem(event) {
     this.props.onDeleteItem(this.props.id);
-    await axios.post("http://127.0.0.1:1112/abandon_a_record", null, {
+    await axios.post("http://127.0.0.1:1114/abandon_a_record", null, {
       params: { recordId: this.props.id },
     });
   }
