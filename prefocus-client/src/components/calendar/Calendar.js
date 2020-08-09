@@ -43,12 +43,25 @@ class Calendar extends React.Component {
     const selected = day.date.format("DDMMYYYY");
     await axios
       .get(
-        `http://127.0.0.1:1112/merge_uncomplete_prefocus_from_a_selected_date`,
+        `http://127.0.0.1:1114/merge_uncomplete_prefocus_from_a_selected_date`,
         { params: { selected: selected } }
       )
       .then((response) => {
         const got = response.data["uncompleted"];
-        this.props.mergeUncompleted(got);
+
+        if (got.length > 0) {
+          if (
+            window.confirm(
+              "Are you sure you want to merge " +
+                got.length +
+                " prefocus into today's list?"
+            )
+          ) {
+            this.props.mergeUncompleted(got);
+          } else {
+            // Do nothing!
+          }
+        }
       });
   }
 
