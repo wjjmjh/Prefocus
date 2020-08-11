@@ -3,7 +3,8 @@ from flask_cors import CORS
 
 from prefocus.backend import (abandon_a_record, all_today_prefocus,
                               append_a_prefocus, bytes_to_dict, count_a_day,
-                              focused_to_focusing, focusing_to_focused,
+                              edit_prefocus, focused_to_focusing,
+                              focusing_to_focused,
                               merge_uncomplete_prefocus_from_a_selected_date,
                               purge_database)
 
@@ -70,6 +71,14 @@ def app_merge_uncomplete_prefocus_from_a_selected_date():
 def app_count_a_day():
     selected = request.args.get("selected")
     return count_a_day(selected)
+
+
+@app.route("/edit_prefocus", methods=["POST"])
+def app_edit_prefocus():
+    id = request.args.get("id")
+    val = request.args.get("val")
+    edit_prefocus(id, val)
+    return GOOD_STATUS
 
 
 if __name__ == "__main__":

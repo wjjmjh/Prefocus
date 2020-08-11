@@ -86,6 +86,14 @@ def count_a_day(date):
     try:
         got = got[0][0]
     except IndexError:
-      pass
+        pass
     print("{}:{}".format(str(date), str(got)))
     return {"number_of_left": number_of_left}
+
+
+def edit_prefocus(id, val):
+    mysql.do(
+        "UPDATE focusing SET prefocus = {val} WHERE id = {id}".format(
+            val=wrap(val), id=wrap(id)
+        )
+    )
