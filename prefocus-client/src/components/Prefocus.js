@@ -16,6 +16,7 @@ class Prefocus extends React.Component {
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleAddItem = this.handleAddItem.bind(this);
     this.markItemCompleted = this.markItemCompleted.bind(this);
+    this.onItemEdited = this.onItemEdited.bind(this);
     this.handleDeleteItem = this.handleDeleteItem.bind(this);
     this.handleStashItem = this.handleStashItem.bind(this);
   }
@@ -67,6 +68,24 @@ class Prefocus extends React.Component {
     });
   }
 
+  async onItemEdited(itemId, itemTxt) {
+    await axios.post("http://127.0.0.1:1114/edit_prefocus", null, {
+      params: { id: itemId, val: itemTxt },
+    });
+
+    var updatedItems = await this.state.items.map((item) => {
+      if (itemId === item.id) {
+        item.text = itemTxt;
+      }
+      return item;
+    });
+
+    // State Updates are Merged
+    this.setState({
+      items: [].concat(updatedItems),
+    });
+  }
+
   handleDeleteItem = (itemId) => {
     var updatedItems = this.state.items.filter((item) => {
       return item.id !== itemId;
@@ -102,6 +121,7 @@ class Prefocus extends React.Component {
               <FocusList
                 items={this.state.items}
                 onItemCompleted={this.markItemCompleted}
+                onItemEdited={this.onItemEdited}
                 onDeleteItem={this.handleDeleteItem}
                 onStashItem={this.handleStashItem}
               />

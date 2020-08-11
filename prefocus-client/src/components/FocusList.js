@@ -13,6 +13,7 @@ class FocusList extends React.Component {
             text={item.text}
             completed={item.done}
             onItemCompleted={this.props.onItemCompleted}
+            onItemEdited={this.props.onItemEdited}
             onDeleteItem={this.props.onDeleteItem}
             onStashItem={this.props.onStashItem}
           />

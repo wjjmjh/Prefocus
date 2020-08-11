@@ -1,16 +1,25 @@
-import React from "react";
-import "../styles/focus-item.scss";
 import axios from "axios";
+import React from "react";
+
+import "../styles/focus-item.scss";
+import EditPrefocus from "./dialogs/editPrefocus";
 
 class FocusItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.label = React.createRef();
     this.markCompleted = this.markCompleted.bind(this);
+    this.markEdited = this.markEdited.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.stashItem = this.stashItem.bind(this);
   }
-  markCompleted(event) {
+  markCompleted() {
     this.props.onItemCompleted(this.props.id);
+  }
+
+  markEdited(id, val) {
+    this.props.onItemEdited(id, val);
   }
 
   async deleteItem(event) {
@@ -41,36 +50,45 @@ class FocusItem extends React.Component {
       );
     }
   }
+
   render() {
     const itemClass =
       "form-check todoitem " + (this.props.completed ? "done" : "undone");
     return (
-      <li className={itemClass} ref={(li) => (this._listItem = li)}>
-        <label className="form-check-label">
+      <div>
+        <li className={itemClass} ref={(li) => (this._listItem = li)}>
           <input
             type="checkbox"
             className="form-check-input"
             onChange={this.markCompleted}
-          />{" "}
-          {this.props.text}
-        </label>
-        <button
-          type="button"
-          id={"stashItem"}
-          className=""
-          onClick={this.stashItem}
-        >
-          Stash
-        </button>
-        <button
-          type="button"
-          id={"deleteItem"}
-          className=""
-          onClick={this.deleteItem}
-        >
-          Remove
-        </button>
-      </li>
+          />
+          <label
+            ref={this.label}
+            className="form-check-label"
+            contentEditable="true"
+            onKeyPress={this.markEdited}
+          >
+            {this.props.text}
+          </label>
+          <button
+            type="button"
+            id={"stashItem"}
+            className=""
+            onClick={this.stashItem}
+          >
+            Stash
+          </button>
+          <button
+            type="button"
+            id={"deleteItem"}
+            className=""
+            onClick={this.deleteItem}
+          >
+            Remove
+          </button>
+        </li>
+        <EditPrefocus id={this.props.id} editPrefocus={this.markEdited} />
+      </div>
     );
   }
 }
