@@ -20,6 +20,7 @@ class EditPrefocus extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
     console.log(this.state.value);
+    this.props.editPrefocus(this.props.id, this.state.value);
   };
 
   setTextValue = (event) => {
