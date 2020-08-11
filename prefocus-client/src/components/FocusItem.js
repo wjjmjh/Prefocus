@@ -41,17 +41,28 @@ class FocusItem extends React.Component {
       );
     }
   }
+
+  editPrefocus(e) {
+    if (e.which === 13) {
+      alert("oi");
+    }
+  }
+
   render() {
     const itemClass =
       "form-check todoitem " + (this.props.completed ? "done" : "undone");
     return (
       <li className={itemClass} ref={(li) => (this._listItem = li)}>
-        <label className="form-check-label">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            onChange={this.markCompleted}
-          />{" "}
+        <input
+          type="checkbox"
+          className="form-check-input"
+          onChange={this.markCompleted}
+        />
+        <label
+          className="form-check-label"
+          contentEditable="true"
+          onKeyPress={this.editPrefocus}
+        >
           {this.props.text}
         </label>
         <button
