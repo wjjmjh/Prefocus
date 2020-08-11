@@ -5,13 +5,12 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import "../../styles/dialogs/dialog.scss";
 
 class EditPrefocus extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: false, value: "" };
   }
 
   handleClickOpen = () => {
@@ -20,6 +19,11 @@ class EditPrefocus extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false });
+    console.log(this.state.value);
+  };
+
+  setTextValue = (event) => {
+    this.setState({ value: event.target.value });
   };
 
   render() {
@@ -38,18 +42,14 @@ class EditPrefocus extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
+            <DialogContentText>Edit this Prefocus.</DialogContentText>
             <TextField
               autoFocus
+              onChange={this.setTextValue}
               margin="dense"
               id="name"
-              label="Email Address"
-              type="email"
+              label="new Prefocus"
               fullWidth
             />
           </DialogContent>
@@ -58,7 +58,7 @@ class EditPrefocus extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.handleClose} color="primary">
-              Subscribe
+              Edit
             </Button>
           </DialogActions>
         </Dialog>
