@@ -127,23 +127,23 @@ class Prefocus extends React.Component {
               />
             </div>
           </div>
-          <form>
+          <div id={"input_and_add"}>
             <div>
               <input
-                type="text"
-                onChange={this.handleTextChange}
-                value={this.state.text}
+                  type="text"
+                  onChange={this.handleTextChange}
+                  value={this.state.text}
               />
             </div>
             <div>
-              <button
-                onClick={this.handleAddItem}
-                disabled={!this.state.text}
+              <button id={"handle_item_button"}
+                  onClick={this.handleAddItem}
+                  disabled={!this.state.text}
               >
                 {"Add > " + (this.state.items.length + 1)}
               </button>
             </div>
-          </form>
+          </div>
         </div>
         <Calendar mergeUncompleted={this.mergeUncompleted} />
       </div>

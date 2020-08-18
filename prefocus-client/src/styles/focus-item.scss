@@ -1,47 +1,26 @@
-.todoitem {
-  //position: relative;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem 2rem 0.5rem 0.5rem;
-  border-top: 1px solid #ccc;
-
-  &.done {
-    .form-check-label {
-      color: #999;
-      text-decoration: line-through;
-    }
-  }
-
-  &.highlight {
-    border-color: #6279fd;
-    background-color: #2f8990;
-
-    &:last-child {
-      border-color: #294dff;
-    }
-  }
-
-  &:last-child {
-    border-bottom: 1px solid #ccc;
-  }
-
-  .form-check-label {
-    width: 100%;
-
-    .form-check-input {
-      margin-right: 1rem;
-    }
-  }
+#checkbox_and_prefocus {
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: 30px;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  background-color: #1c6ea4;
+  border-radius: 10px;
+  width: 40%;
+  margin-left: 30%;
 }
 
-#deleteItem {
-  color: white;
-  background-color: #475bdb;
-  border-radius: 6px;
-  margin-left: 5px;
+#checkbox {
+  margin-top: 7px;
+  grid-area: 1 / 45 / 2 / 50;
 }
 
-#stashItem {
+#prefocus {
+  display: flex;
+  align-items: center;
   color: white;
-  background-color: #06782d;
-  border-radius: 6px;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 25px;
+  grid-area: 1 / 50 / 2 / 100;
 }

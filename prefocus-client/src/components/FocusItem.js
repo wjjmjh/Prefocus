@@ -56,32 +56,35 @@ class FocusItem extends React.Component {
       "form-check todoitem " + (this.props.completed ? "done" : "undone");
     return (
       <div>
-        <li ref={(li) => (this._listItem = li)}>
-          <input
-            type="checkbox"
-
-            onChange={this.markCompleted}
-          />
-          <label
-            ref={this.label}
-            contentEditable="true"
-            onKeyPress={this.markEdited}
-          >
-            {this.props.text}
-          </label>
+        <div>
+          <div id={"checkbox_and_prefocus"}>
+            <input
+                id={"checkbox"}
+                type="checkbox"
+                onChange={this.markCompleted}
+            />
+            <label
+                id={"prefocus"}
+                ref={this.label}
+                contentEditable="true"
+                onKeyPress={this.markEdited}
+            >
+              {this.props.text}
+            </label>
+          </div>
           <button
-            type="button"
-            onClick={this.stashItem}
+              type="button"
+              onClick={this.stashItem}
           >
             Stash
           </button>
           <button
-            type="button"
-            onClick={this.deleteItem}
+              type="button"
+              onClick={this.deleteItem}
           >
             Remove
           </button>
-        </li>
+        </div>
         <EditPrefocus editPrefocus={this.markEdited} />
       </div>
     );
