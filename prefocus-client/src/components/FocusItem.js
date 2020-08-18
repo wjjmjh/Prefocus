@@ -56,15 +56,14 @@ class FocusItem extends React.Component {
       "form-check todoitem " + (this.props.completed ? "done" : "undone");
     return (
       <div>
-        <li className={itemClass} ref={(li) => (this._listItem = li)}>
+        <li ref={(li) => (this._listItem = li)}>
           <input
             type="checkbox"
-            className="form-check-input"
+
             onChange={this.markCompleted}
           />
           <label
             ref={this.label}
-            className="form-check-label"
             contentEditable="true"
             onKeyPress={this.markEdited}
           >
@@ -72,22 +71,18 @@ class FocusItem extends React.Component {
           </label>
           <button
             type="button"
-            id={"stashItem"}
-            className=""
             onClick={this.stashItem}
           >
             Stash
           </button>
           <button
             type="button"
-            id={"deleteItem"}
-            className=""
             onClick={this.deleteItem}
           >
             Remove
           </button>
         </li>
-        <EditPrefocus id={this.props.id} editPrefocus={this.markEdited} />
+        <EditPrefocus editPrefocus={this.markEdited} />
       </div>
     );
   }

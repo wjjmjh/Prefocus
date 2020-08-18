@@ -115,9 +115,9 @@ class Prefocus extends React.Component {
   render() {
     return (
       <div>
-        <div id={"stack"}>
-          <div className="row">
-            <div className="col-md-3">
+        <div>
+          <div>
+            <div>
               <FocusList
                 items={this.state.items}
                 onItemCompleted={this.markItemCompleted}
@@ -127,18 +127,16 @@ class Prefocus extends React.Component {
               />
             </div>
           </div>
-          <form className="row">
-            <div className="col-md-3">
+          <form>
+            <div>
               <input
                 type="text"
-                className="form-control"
                 onChange={this.handleTextChange}
                 value={this.state.text}
               />
             </div>
-            <div className="col-md-3">
+            <div>
               <button
-                className="btn btn-primary"
                 onClick={this.handleAddItem}
                 disabled={!this.state.text}
               >

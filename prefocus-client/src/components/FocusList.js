@@ -5,7 +5,7 @@ import "../styles/focus-list.scss";
 class FocusList extends React.Component {
   render() {
     return (
-      <ul className="todolist">
+      <ul>
         {this.props.items.map((item) => (
           <FocusItem
             key={item.id}
