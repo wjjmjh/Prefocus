@@ -58,19 +58,21 @@ class FocusItem extends React.Component {
       <div>
         <div>
           <div id={"checkbox_and_prefocus"}>
-            <input
-                id={"checkbox"}
-                type="checkbox"
-                onChange={this.markCompleted}
-            />
-            <label
-                id={"prefocus"}
-                ref={this.label}
-                contentEditable="true"
-                onKeyPress={this.markEdited}
-            >
-              {this.props.text}
-            </label>
+            <div id={"checkbox"}>
+              <input
+                  type="checkbox"
+                  onChange={this.markCompleted}
+              />
+            </div>
+            <div id={"prefocus"}>
+              <label
+                  ref={this.label}
+                  contentEditable="true"
+                  onKeyPress={this.markEdited}
+              >
+                {this.props.text}
+              </label>
+            </div>
           </div>
           <div id={"btns"}>
             <button

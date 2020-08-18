@@ -1,7 +1,7 @@
 #checkbox_and_prefocus {
   margin-top: 5px;
   display: grid;
-  grid-template-columns: repeat(100, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 30px;
   grid-column-gap: 0;
   grid-row-gap: 0;
@@ -12,18 +12,22 @@
 }
 
 #checkbox {
-  margin-top: 7px;
-  grid-area: 1 / 45 / 2 / 50;
+  margin-top: 5px;
+  grid-area: 1 / 6 / 2 / 8;
+}
+
+input[type="checkbox"] {
+  transform: scale(2);
 }
 
 #prefocus {
   display: flex;
-  align-items: center;
+  overflow: hidden;
   color: white;
   font-family: Georgia, serif;
   font-weight: bold;
   font-size: 25px;
-  grid-area: 1 / 50 / 2 / 100;
+  grid-area: 1 / 7 / 2 / 13;
 }
 
 #btns {
