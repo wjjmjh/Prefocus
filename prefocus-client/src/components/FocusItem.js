@@ -72,18 +72,22 @@ class FocusItem extends React.Component {
               {this.props.text}
             </label>
           </div>
-          <button
-              type="button"
-              onClick={this.stashItem}
-          >
-            Stash
-          </button>
-          <button
-              type="button"
-              onClick={this.deleteItem}
-          >
-            Remove
-          </button>
+          <div id={"btns"}>
+            <button
+                className={"btn"}
+                type="button"
+                onClick={this.stashItem}
+            >
+              Stash
+            </button>
+            <button
+                className={"btn"}
+                type="button"
+                onClick={this.deleteItem}
+            >
+              Remove
+            </button>
+          </div>
         </div>
         <EditPrefocus editPrefocus={this.markEdited} />
       </div>
